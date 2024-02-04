@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LogInController implements Initializable {
+public class git LogInController implements Initializable {
     @FXML private PasswordField passwordField;
     @FXML private TextField userId;
     private AppModel model;
