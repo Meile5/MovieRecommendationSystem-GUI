@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="background" stylesheets="@../CSS/style1.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
+<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" styleClass="background" stylesheets="@../CSS/style2.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
    <children>
-      <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="291.0" HBox.hgrow="ALWAYS">
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="291.0" styleClass="style1.css" HBox.hgrow="ALWAYS">
          <children>
             <ImageView fitWidth="80.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="SOMETIMES">
                <image>
@@ -33,39 +33,39 @@
             </ImageView>
          </children>
       </HBox>
-      <VBox fx:id="hBox1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0, 0, 0, 0.78); -fx-background-radius: 20;" HBox.hgrow="ALWAYS">
+      <VBox fx:id="hBox1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="305.0" prefWidth="605.0" style="-fx-background-color: rgba(0, 0, 0, 0.78); -fx-background-radius: 20;" HBox.hgrow="ALWAYS">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <HBox.margin>
-            <Insets bottom="170.0" right="300.0" top="170.0" />
+            <Insets bottom="170.0" left="20.0" right="350.0" top="170.0" />
          </HBox.margin>
          <children>
             <Label text="Sign In" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font size="24.0" />
                </font>
                <VBox.margin>
-                  <Insets left="20.0" top="30.0" />
+                  <Insets left="100.0" top="30.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="userId" opacity="0.5" prefWidth="395.0" promptText="Username or Email" style="-fx-background-color: gray;" text="Georgi Facello" VBox.vgrow="SOMETIMES">
+            <TextField fx:id="userId" opacity="0.87" prefWidth="395.0" promptText="Username or Email" style="-fx-background-color: rgba(50, 50, 50, 0.7);" VBox.vgrow="SOMETIMES">
                <font>
                   <Font size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="30.0" left="70.0" right="70.0" top="30.0" />
+                  <Insets bottom="30.0" left="100.0" right="100.0" top="30.0" />
                </VBox.margin>
             </TextField>
-            <PasswordField fx:id="passwordField" opacity="0.5" promptText="Password" style="-fx-background-color: gray;">
+            <PasswordField fx:id="passwordField" opacity="0.87" promptText="Password" style="-fx-background-color: rgba(50, 50, 50, 0.7);">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="30.0" left="70.0" right="70.0" top="30.0" />
+                  <Insets left="100.0" right="100.0" top="17.0" />
                </VBox.margin>
             </PasswordField>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: orange;" text="Sign In">
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#logIn" style="-fx-background-color: orange;" text="Sign In" textFill="#0d0202">
                <VBox.margin>
                   <Insets left="270.0" right="270.0" top="30.0" />
                </VBox.margin>
