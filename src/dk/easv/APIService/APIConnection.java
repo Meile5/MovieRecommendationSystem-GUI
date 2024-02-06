@@ -1,4 +1,4 @@
-package APIService;
+package dk.easv.APIService;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class APIConnection {
-    private static final String API_KEY = "YOUR_TMDB_API_KEY";
+    private static final String API_KEY = "7f40dd353832cce1a85eedc0ab2a60de";
     private static final String BASE_URL = "https://api.themoviedb.org/3";
     private static final String SEARCH_MOVIE_ENDPOINT = "/search/movie";
     private static final String MOVIE_IMAGES_ENDPOINT = "/movie/%d/images";
