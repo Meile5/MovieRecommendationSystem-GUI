@@ -1,0 +1,6 @@
+.background {
+    -fx-background-image: url("background2.png");
+    -fx-background-size: cover;
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+}
+
