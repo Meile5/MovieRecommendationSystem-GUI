@@ -17,8 +17,8 @@ import java.util.*;
 
 
 public class AppController implements Initializable {
-    @FXML
-    private ListView<User> lvUsers;
+    //@FXML
+    //private ListView<User> lvUsers;
     @FXML
     private ListView<Movie> lvTopForUser;
     @FXML
@@ -45,7 +45,6 @@ public class AppController implements Initializable {
 
     public void setModel(AppModel model) {
         this.model = model;
-        lvUsers.setItems(model.getObsUsers());
         lvTopForUser.setItems(model.getObsTopMovieSeen());
         lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
         lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
@@ -55,6 +54,7 @@ public class AppController implements Initializable {
         model.loadUsers();
         stopTimer();
 
+        /*
         lvUsers.getSelectionModel().selectedItemProperty().addListener(
                 (observableValue, oldUser, selectedUser) -> {
                     startTimer("Loading all data for user: " + selectedUser);
@@ -63,6 +63,8 @@ public class AppController implements Initializable {
 
         // Select the logged-in user in the listview, automagically trigger the listener above
         lvUsers.getSelectionModel().select(model.getObsLoggedInUser());
+
+         */
     }
 
     @Override
@@ -87,6 +89,7 @@ public class AppController implements Initializable {
                 } else {
                     try {
                         String imageUrl = getImageUrl(item);
+                        System.out.println(imageUrl);
                         if (imageUrl != null) {
                             imageView.setImage(new Image(imageUrl));
                             setGraphic(imageView);
