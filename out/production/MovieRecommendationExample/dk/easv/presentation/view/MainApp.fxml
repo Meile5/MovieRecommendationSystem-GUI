@@ -14,7 +14,7 @@
             <Label text="Label" />
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
                <content>
-                  <ListView fx:id="lvTopSimilarUsers" prefHeight="131.0" prefWidth="1197.0" />
+                  <ListView fx:id="lvUsers" prefHeight="131.0" prefWidth="1197.0" />
                </content>
             </ScrollPane>
          </children>
