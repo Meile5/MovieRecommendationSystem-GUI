@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" />
       <VBox prefHeight="155.0" prefWidth="1200.0">
@@ -14,7 +11,7 @@
             <Label text="Label" />
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
                <content>
-                  <ListView fx:id="lvTopSimilarUsers" prefHeight="131.0" prefWidth="1197.0" />
+                  <ListView fx:id="lvTopSimilarUsers" orientation="HORIZONTAL" prefHeight="131.0" prefWidth="1197.0" />
                </content>
             </ScrollPane>
          </children>
@@ -24,7 +21,7 @@
             <Label text="Label" />
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
                <content>
-                  <ListView fx:id="lvTopForUser" prefHeight="135.0" prefWidth="1197.0" />
+                  <ListView fx:id="lvTopForUser" orientation="HORIZONTAL" prefHeight="135.0" prefWidth="1197.0" />
                </content>
             </ScrollPane>
          </children>
