@@ -48,6 +48,7 @@ public class DataAccessManager {
                 Movie movie = new Movie(Integer.parseInt(split[0]), split[2], Integer.parseInt(split[1]));
                 movies.put(movie.getId(), movie);
             }
+            loadPosterUrls();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,5 +89,17 @@ public class DataAccessManager {
         }
     }
 
-
+    private void loadPosterUrls() {
+        try {
+            List<String> posterLines = Files.readAllLines(Path.of("data/movie_posters.txt"));
+            for (String posterLine : posterLines) {
+                String[] split = posterLine.split(",");
+                int movieId = Integer.parseInt(split[0]);
+                String url = split[1];
+                movies.get(movieId).setPosterPath(url);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

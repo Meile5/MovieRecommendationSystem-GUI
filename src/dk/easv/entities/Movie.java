@@ -8,12 +8,14 @@ public class Movie {
     private String title;
     private int year;
     private List<Rating> ratings;
+    private String posterPath;
 
     public Movie(int id, String title, int year) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.ratings = new ArrayList<>();
+        this.posterPath = "";
     }
 
     public double getAverageRating(){
@@ -59,5 +61,13 @@ public class Movie {
         return  title + ", " + year +
                 ", ratings=" + ratings.size() +
                 ", avg="+ Math.round(getAverageRating()*10)/10.0;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 }

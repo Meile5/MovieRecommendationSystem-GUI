@@ -71,7 +71,8 @@ public class APIConnection {
      * @return List of image URLs.
      * @throws IOException If an error occurs during the HTTP request.
      */
-    public List<String> getMovieImages(int movieId) throws IOException {
+    public String getMovieImages(int movieId) throws IOException {
+        var result = "NO POSTER FOUND";
         String endpoint = String.format(BASE_URL + MOVIE_IMAGES_ENDPOINT, movieId) + "?api_key=" + API_KEY;
 
         HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
@@ -88,7 +89,6 @@ public class APIConnection {
             reader.close();
 
             List<String> imageUrls = new ArrayList<>();
-            Gson gson = new Gson();
             JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
             JsonArray postersArray = jsonObject.getAsJsonArray("posters");
             for (JsonElement posterElement : postersArray) {
@@ -96,9 +96,14 @@ public class APIConnection {
                 String imageUrl = "https://image.tmdb.org/t/p/original" + posterObject.get("file_path").getAsString();
                 imageUrls.add(imageUrl);
             }
-            return imageUrls;
+
+            if (imageUrls.size() > 0) {
+                result = imageUrls.get(0);
+            }
         } else {
-            throw new IOException("Failed to fetch movie images. HTTP error code: " + responseCode);
+            if (responseCode == 429)
+                throw new RuntimeException("Rate limit exceeded. Please wait a few seconds and try again.");
         }
+        return result;
     }
 }
