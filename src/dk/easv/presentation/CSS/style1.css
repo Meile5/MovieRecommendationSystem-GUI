@@ -2,6 +2,14 @@
      -fx-background-color: radial-gradient(center 80% 90% , radius 50%, #ff7f50, #1a0b05);
 }
 
+.list-view {
+            -fx-background-color: radial-gradient(center 80% 90% , radius 50%, #ff7f50, #1a0b05);   
+}
+
 .label {
     -fx-text-fill: pink;
+}
+
+.list-cell {
+             -fx-background-color: transparent;
 }
