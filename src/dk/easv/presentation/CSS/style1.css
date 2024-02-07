@@ -1,5 +1,5 @@
 .background {
-    -fx-background-color: #322e2e;
+     -fx-background-color: radial-gradient(center 80% 90% , radius 50%, #ff7f50, #1a0b05);
 }
 
 .label {
