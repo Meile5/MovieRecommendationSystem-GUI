@@ -31,7 +31,7 @@
             <Label text="Label" />
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
                <content>
-                  <ListView fx:id="lvTopAvgNotSeen" prefHeight="130.0" prefWidth="1197.0" />
+                  <ListView fx:id="lvTopAvgNotSeen" orientation="HORIZONTAL" prefHeight="130.0" prefWidth="1197.0" />
                </content>
             </ScrollPane>
          </children>
@@ -41,7 +41,7 @@
             <Label text="Label" />
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
                <content>
-                  <ListView fx:id="lvTopFromSimilar" prefHeight="139.0" prefWidth="1199.0" />
+                  <ListView fx:id="lvTopFromSimilar" orientation="HORIZONTAL" prefHeight="139.0" prefWidth="1199.0" />
                </content>
             </ScrollPane>
          </children>

@@ -45,12 +45,14 @@ public class AppController implements Initializable {
 
     public void setModel(AppModel model) {
         this.model = model;
+
         lvTopForUser.setItems(model.getObsTopMovieSeen());
         lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
         lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
         lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
 
         startTimer("Load users");
+        model.loadUsers();
         model.loadUsers();
         stopTimer();
 
@@ -59,12 +61,12 @@ public class AppController implements Initializable {
                 (observableValue, oldUser, selectedUser) -> {
                     startTimer("Loading all data for user: " + selectedUser);
                     model.loadData(selectedUser);
-                });
+                });*/
 
-        // Select the logged-in user in the listview, automagically trigger the listener above
-        lvUsers.getSelectionModel().select(model.getObsLoggedInUser());
+        //Select the logged-in user in the listview, automagically trigger the listener above
+        //lvUsers.getSelectionModel().select(model.getObsLoggedInUser());
 
-         */
+
     }
 
     @Override
