@@ -93,6 +93,8 @@ public class AppController implements Initializable {
                         String imageUrl = getImageUrl(item);
                         System.out.println(imageUrl);
                         if (imageUrl != null) {
+                            imageView.setFitHeight(30);
+                            imageView.setFitWidth(50);
                             imageView.setImage(new Image(imageUrl));
                             setGraphic(imageView);
                         } else {
