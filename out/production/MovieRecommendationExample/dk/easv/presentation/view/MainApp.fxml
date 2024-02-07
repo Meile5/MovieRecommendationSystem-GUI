@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<MFXScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" fx:controller="dk.easv.presentation.controller.AppController" xmlns:fx="http://javafx.com/fxml/1">
+<MFXScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
    <content>
       <GridPane>
          <columnConstraints>
@@ -44,10 +44,22 @@
                   </ImageView>
                </children>
             </HBox>
-            <ListView fx:id="lvTopSimilarUsers" prefHeight="172.0" prefWidth="1198.0" GridPane.rowIndex="1" />
-            <ListView fx:id="lvTopForUser" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
-            <ListView fx:id="lvTopAvgNotSeen" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
-            <ListView fx:id="lvTopFromSimilar" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4" />
+            <ListView fx:id="lvTopSimilarUsers" orientation="HORIZONTAL" prefHeight="172.0" prefWidth="1198.0" GridPane.rowIndex="1">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></ListView>
+            <ListView fx:id="lvTopForUser" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></ListView>
+            <ListView fx:id="lvTopAvgNotSeen" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></ListView>
+            <ListView fx:id="lvTopFromSimilar" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <padding>
+                  <Insets right="10.0" />
+               </padding></ListView>
          </children>
       </GridPane>
    </content>
