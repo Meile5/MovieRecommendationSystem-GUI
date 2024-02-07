@@ -10,9 +10,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<<<<<<< HEAD
 <MFXScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
+=======
+<MFXScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(rgb(254, 102, 125), rgb(255, 163, 117));" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
+>>>>>>> 0f34b46a786fc006ec0bd763bbb255390de2ea91
    <content>
-      <GridPane>
+      <GridPane style="-fx-background-color: linear-gradient(rgb(254, 102, 125), rgb(255, 163, 117));">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
          </columnConstraints>
@@ -44,10 +48,29 @@
                   </ImageView>
                </children>
             </HBox>
+<<<<<<< HEAD
             <ListView fx:id="lvTopSimilarUsers" orientation="HORIZONTAL" prefHeight="172.0" prefWidth="1198.0" GridPane.rowIndex="1" />
             <ListView fx:id="lvTopForUser" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
             <ListView fx:id="lvTopAvgNotSeen" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
             <ListView fx:id="lvTopFromSimilar" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4" />
+=======
+            <ListView fx:id="lvTopSimilarUsers" orientation="HORIZONTAL" prefHeight="172.0" prefWidth="1198.0" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin></ListView>
+            <ListView fx:id="lvTopForUser" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin></ListView>
+            <ListView fx:id="lvTopAvgNotSeen" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin></ListView>
+            <ListView fx:id="lvTopFromSimilar" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </GridPane.margin></ListView>
+>>>>>>> 0f34b46a786fc006ec0bd763bbb255390de2ea91
          </children>
       </GridPane>
    </content>
