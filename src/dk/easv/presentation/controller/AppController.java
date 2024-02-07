@@ -6,10 +6,14 @@ import dk.easv.presentation.model.AppModel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -81,6 +85,13 @@ public class AppController implements Initializable {
     private <T> void setCustomCellFactory(ListView<T> listView) {
         listView.setCellFactory(param -> new ListCell<T>() {
             private final ImageView imageView = new ImageView();
+            private final Label titleLabel = new Label();
+
+            {
+                titleLabel.setAlignment(Pos.BOTTOM_LEFT); // Align the title in the center
+                titleLabel.setWrapText(true); // Allow the title to wrap if it's too long
+                setContentDisplay(ContentDisplay.BOTTOM); // Display the graphic (image) above the text (title)
+            }
 
             @Override
             protected void updateItem(T item, boolean empty) {
@@ -91,12 +102,14 @@ public class AppController implements Initializable {
                 } else {
                     try {
                         String imageUrl = getImageUrl(item);
-                        System.out.println(imageUrl);
+                        //System.out.println(imageUrl);
                         if (imageUrl != null) {
-                            imageView.setFitHeight(30);
-                            imageView.setFitWidth(50);
+                            imageView.setFitHeight(200);
+                            imageView.setFitWidth(150);
+                            imageView.setPreserveRatio(true);
                             imageView.setImage(new Image(imageUrl));
-                            setGraphic(imageView);
+                            titleLabel.setText(((Movie)item).getTitle()); // Set the title of the movie
+                            setGraphic(new VBox(imageView, titleLabel));
                         } else {
                             setText("No Image Available");
                         }
