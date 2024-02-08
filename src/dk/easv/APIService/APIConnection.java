@@ -5,12 +5,15 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import dk.easv.entities.Movie;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,13 +25,14 @@ public class APIConnection {
 
     /**
      * Searches for a movie by title using the TMDb API.
-     * @param title The title of the movie to search for.
+     * @param movie The movie to search for.
      * @return JSON string containing search results.
      * @throws IOException If an error occurs during the HTTP request.
      */
-    public String searchMovie(String title) throws IOException {
-        String encodedTitle = title.replace(" ", "%20");
-        String endpoint = BASE_URL + SEARCH_MOVIE_ENDPOINT + "?api_key=" + API_KEY + "&query=" + encodedTitle;
+    public int searchMovie(Movie movie) throws IOException {
+        String encodedTitle = URLEncoder.encode(movie.getTitle(), StandardCharsets.UTF_8);
+
+        String endpoint = BASE_URL + SEARCH_MOVIE_ENDPOINT + "?api_key=" + API_KEY + "&query=" + encodedTitle + "&include_adult=true" + "&primary_release_year=" + movie.getYear();
 
         HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
         connection.setRequestMethod("GET");
@@ -42,7 +46,7 @@ public class APIConnection {
                 response.append(line);
             }
             reader.close();
-            return response.toString();
+            return extractMovieIdFromResponse(response.toString());
         } else {
             throw new IOException("Failed to search for movie. HTTP error code: " + responseCode);
         }
@@ -54,7 +58,6 @@ public class APIConnection {
      * @return The movie ID.
      */
     public int extractMovieIdFromResponse(String searchResult) {
-        Gson gson = new Gson();
         JsonObject jsonObject = JsonParser.parseString(searchResult).getAsJsonObject();
         JsonArray resultsArray = jsonObject.getAsJsonArray("results");
         if (resultsArray.size() > 0) {
@@ -71,7 +74,10 @@ public class APIConnection {
      * @return List of image URLs.
      * @throws IOException If an error occurs during the HTTP request.
      */
-    public List<String> getMovieImages(int movieId) throws IOException {
+    public String getMovieImages(int movieId) throws IOException {
+        if (movieId == -1) return "NO POSTER FOUND"; // Movie not found
+
+        var result = "NO POSTER FOUND";
         String endpoint = String.format(BASE_URL + MOVIE_IMAGES_ENDPOINT, movieId) + "?api_key=" + API_KEY;
 
         HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
@@ -88,7 +94,6 @@ public class APIConnection {
             reader.close();
 
             List<String> imageUrls = new ArrayList<>();
-            Gson gson = new Gson();
             JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
             JsonArray postersArray = jsonObject.getAsJsonArray("posters");
             for (JsonElement posterElement : postersArray) {
@@ -96,9 +101,14 @@ public class APIConnection {
                 String imageUrl = "https://image.tmdb.org/t/p/original" + posterObject.get("file_path").getAsString();
                 imageUrls.add(imageUrl);
             }
-            return imageUrls;
+
+            if (imageUrls.size() > 0) {
+                result = imageUrls.get(0);
+            }
         } else {
-            throw new IOException("Failed to fetch movie images. HTTP error code: " + responseCode);
+            if (responseCode == 429)
+                throw new RuntimeException("Rate limit exceeded. Please wait a few seconds and try again.");
         }
+        return result;
     }
 }

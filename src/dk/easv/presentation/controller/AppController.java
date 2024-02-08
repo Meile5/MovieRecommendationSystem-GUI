@@ -13,11 +13,14 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 
 public class AppController implements Initializable {
@@ -31,8 +34,6 @@ public class AppController implements Initializable {
     private ListView<UserSimilarity> lvTopSimilarUsers;
     @FXML
     private ListView<TopMovie> lvTopFromSimilar;
-    private APIConnection apiConnection = new APIConnection();
-
 
     private AppModel model;
     private long timerStartMillis = 0;
@@ -56,7 +57,6 @@ public class AppController implements Initializable {
         lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
 
         startTimer("Load users");
-        model.loadUsers();
         model.loadUsers();
         stopTimer();
 
@@ -107,7 +107,7 @@ public class AppController implements Initializable {
                             imageView.setFitHeight(200);
                             imageView.setFitWidth(150);
                             imageView.setPreserveRatio(true);
-                            imageView.setImage(new Image(imageUrl));
+                            imageView.setImage(new Image(imageUrl, true)); // When background loading is enabled, the image will be loaded asynchronously (not freezing the UI)
                             titleLabel.setText(((Movie)item).getTitle()); // Set the title of the movie
                             setGraphic(new VBox(imageView, titleLabel));
                         } else {
@@ -124,10 +124,12 @@ public class AppController implements Initializable {
 
     // Get image URL based on the item type
     private <T> String getImageUrl(T item) throws IOException {
-        if (item instanceof Movie) {
-            Movie movie = (Movie) item;
-            List<String> imageUrls = apiConnection.getMovieImages(movie.getId());
-            return !imageUrls.isEmpty() ? imageUrls.get(0) : null;
+        if (item instanceof Movie movie) {
+            if (Objects.equals(movie.getPosterPath(), "NO POSTER FOUND")) {
+                return "https://images.unsplash.com/photo-1706859450156-0214dca4260d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; //TODO: put whatever image you want to display when no poster is found
+            }
+
+            return movie.getPosterPath();
         }
         // Add other conditions for different item types if needed
         return null;
