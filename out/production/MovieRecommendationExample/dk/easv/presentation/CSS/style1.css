@@ -3,11 +3,12 @@
 }
 
 .list-view {
-    -fx-background-color: radial-gradient(center 50% 120% , radius 35%, rgba(246, 80, 22, 0.48), #1a0b05);
+    -fx-background-color: transparent;
 }
 
 .label {
-    -fx-text-fill: pink;
+    -fx-text-fill: rgb(241, 128, 66);
+    -fx-font-size: 18;
 }
 
 .list-cell {

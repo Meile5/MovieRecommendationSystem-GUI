@@ -3,7 +3,7 @@
 }
 
 .list-view {
-    -fx-background-color: radial-gradient(center 85% 115% , radius 25%, rgba(246, 80, 22, 0.48), #1a0b05);
+    -fx-background-color: transparent;
 }
 
 .label {
