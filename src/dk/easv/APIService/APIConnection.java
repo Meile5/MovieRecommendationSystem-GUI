@@ -22,6 +22,7 @@ public class APIConnection {
     private static final String BASE_URL = "https://api.themoviedb.org/3";
     private static final String SEARCH_MOVIE_ENDPOINT = "/search/movie";
     private static final String MOVIE_IMAGES_ENDPOINT = "/movie/%d/images";
+    private JsonObject backdropObject;
 
     /**
      * Searches for a movie by title using the TMDb API.
@@ -95,10 +96,11 @@ public class APIConnection {
 
             List<String> imageUrls = new ArrayList<>();
             JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
-            JsonArray postersArray = jsonObject.getAsJsonArray("posters");
-            for (JsonElement posterElement : postersArray) {
-                JsonObject posterObject = posterElement.getAsJsonObject();
-                String imageUrl = "https://image.tmdb.org/t/p/original" + posterObject.get("file_path").getAsString();
+            JsonArray backdropsArray = jsonObject.getAsJsonArray("backdrops");
+            for (JsonElement backdropElement : backdropsArray) {
+                JsonObject backdropObject = backdropElement.getAsJsonObject();
+                System.out.println(backdropObject.get("file_path").getAsString());
+                String imageUrl = "https://image.tmdb.org/t/p/original" + backdropObject.get("file_path").getAsString();
                 imageUrls.add(imageUrl);
             }
 
