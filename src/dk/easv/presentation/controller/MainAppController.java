@@ -89,6 +89,7 @@ public class MainAppController implements Initializable {
             {
                 titleLabel.setAlignment(Pos.BOTTOM_LEFT); // Align the title in the center
                 titleLabel.setWrapText(true); // Allow the title to wrap if it's too long
+                titleLabel.setMaxWidth(170);
                 setContentDisplay(ContentDisplay.BOTTOM); // Display the graphic (image) above the text (title)
             }
 
