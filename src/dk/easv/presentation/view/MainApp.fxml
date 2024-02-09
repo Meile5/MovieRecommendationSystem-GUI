@@ -29,7 +29,7 @@
             <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
-            <HBox minHeight="130.0">
+            <HBox minHeight="130.0" prefHeight="130.0" prefWidth="1198.0">
                <children>
                   <ImageView fitHeight="66.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -47,7 +47,15 @@
                         <Insets left="-20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Top Similar Movies">
+                  <Label text="Home">
+                     <padding>
+                        <Insets left="50.0" top="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Movies">
                      <padding>
                         <Insets left="20.0" top="40.0" />
                      </padding>
@@ -55,7 +63,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label text="Label">
+                  <Label text="TV Shows">
                      <padding>
                         <Insets left="20.0" top="40.0" />
                      </padding>
@@ -63,15 +71,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label text="Label">
-                     <padding>
-                        <Insets left="20.0" top="40.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label text="Label">
+                  <Label text="My List">
                      <padding>
                         <Insets left="20.0" top="40.0" />
                      </padding>
@@ -104,7 +104,7 @@
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="30.0" left="280.0" top="40.0" />
+                        <Insets bottom="30.0" left="240.0" top="40.0" />
                      </HBox.margin>
                      <padding>
                         <Insets top="5.0" />
@@ -121,7 +121,7 @@
                </GridPane.margin>
                <children>
                   <Label text="Top Similar Movies" />
-                  <ListView fx:id="lvTopSimilarUsers" minHeight="215.0" orientation="HORIZONTAL" prefHeight="215.0" prefWidth="1198.0" stylesheets="@../CSS/style1.css" />
+                  <ListView fx:id="lvTopSimilarUsers" minHeight="215.0" orientation="HORIZONTAL" prefHeight="313.0" prefWidth="1198.0" stylesheets="@../CSS/style1.css" />
                </children>
             </VBox>
             <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
