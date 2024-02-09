@@ -30,7 +30,7 @@ public class MainAppController implements Initializable {
     @FXML
     private ListView<Movie> lvTopAvgNotSeen;
     @FXML
-    private ListView<UserSimilarity> lvTopSimilarUsers;
+   private ListView<UserSimilarity> lvTopSimilarUsers;
 
     @FXML
     private ListView<TopMovie> lvTopFromSimilar;
@@ -53,8 +53,8 @@ public class MainAppController implements Initializable {
 
         lvTopForUser.setItems(model.getObsTopMovieSeen());
         lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
-        lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
-        //lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
+        //lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
+        lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
 
         startTimer("Load users");
         model.loadUsers();
@@ -76,8 +76,8 @@ public class MainAppController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCustomCellFactory(lvTopForUser);
         setCustomCellFactory(lvTopAvgNotSeen);
-        setCustomCellFactory(lvTopSimilarUsers);
-        //setCustomCellFactory(lvTopFromSimilar);
+       // setCustomCellFactory(lvTopSimilarUsers);
+        setCustomCellFactory(lvTopFromSimilar);
     }
 
     // Set custom cell factory for ListView to display movie images

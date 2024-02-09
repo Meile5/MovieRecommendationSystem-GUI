@@ -14397,7 +14397,7 @@
 14399,https://image.tmdb.org/t/p/original/bNERVadSF2OVdZ6vQQ7zsHtLXvB.jpg
 14400,NO POSTER FOUND
 14401,NO POSTER FOUND
-14402,https://image.tmdb.org/t/p/original/xi82e6HmP0BrdkuymBzsfwaIopA.jpg
+14402,https://image.tmdb.org/t/p/original/A2kXYkGGdeLU20YHPM9qs6GX9nN.jpg
 14403,https://image.tmdb.org/t/p/original/nBTCaI494vkkbPlceZv0HpNLmLl.jpg
 14404,https://image.tmdb.org/t/p/original/vxIn8GGLY5LtBeTnRzH2jB7YjB0.jpg
 14405,NO POSTER FOUND
