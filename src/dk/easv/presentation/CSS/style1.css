@@ -7,10 +7,13 @@
 }
 
 .label {
-    -fx-text-fill: rgb(241, 128, 66);
+    -fx-text-fill: #ededed;
     -fx-font-size: 18;
 }
 
 .list-cell {
       -fx-background-color: transparent;
+}
+.text-field{
+    -fx-background-color: rgb(241, 128, 66, 0.85);
 }

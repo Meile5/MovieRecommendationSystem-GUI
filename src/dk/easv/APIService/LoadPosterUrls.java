@@ -2,8 +2,10 @@ package dk.easv.APIService;
 
 import dk.easv.entities.Movie;
 
+import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -14,10 +16,11 @@ public class LoadPosterUrls {
     private final APIConnection apiConnection = new APIConnection();
     private final String FILE_PATH = "data/movie_posters.txt";
     private final ConcurrentHashMap<Integer, Integer> movieIds = new ConcurrentHashMap<>(); // For storing API's movie IDs <app movie ID, API movie ID>
-    private final ConcurrentHashMap<Integer, String> moviePosters = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<Integer, String> moviePosters = new ConcurrentHashMap<>();
     private List<Movie> movies = new ArrayList<>();
 
     public static void main(String[] args) {
+        System.out.println("hey");
         var time = System.currentTimeMillis();
         System.out.println("Starting...");
         System.out.println("Buckle up, this will take a while.");
@@ -26,6 +29,7 @@ public class LoadPosterUrls {
         // Load all movies from file
         System.out.println("Loading movies from a file...");
         loadPosterUrls.loadAllMovies();
+        updateAndSaveUrlsInFile();
         List<Integer> listBreakpoints = loadPosterUrls.getListBreakpoints(10);
 
         // Get movie IDs from the API
@@ -96,8 +100,10 @@ public class LoadPosterUrls {
 
     // Send a request to the API to get the poster URL for a movie
     private void getPosterUrl(int movieId) throws IOException {
+        System.out.println("hey");
         int apiMovieId = movieIds.get(movieId);
         String url = apiConnection.getMovieImages(apiMovieId);
+        System.out.println(url);
         moviePosters.put(movieId, url);
     }
 
@@ -145,4 +151,27 @@ public class LoadPosterUrls {
         listBreakpoints.add(movies.size());
         return listBreakpoints;
     }
+    private static void updateAndSaveUrlsInFile() {
+        try {
+            // Read existing file content
+            List<String> lines = Files.readAllLines(Path.of("data/movie_posters.txt"));
+            FileOutputStream fileOutputStream = new FileOutputStream("data/movie_posters.txt");
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream));
+
+            // Update URLs and write to the file
+            for (String line : lines) {
+                String[] parts = line.split(",");
+                int movieId = Integer.parseInt(parts[0]);
+                if (moviePosters.containsKey(movieId)) {
+                    line = movieId + "," + moviePosters.get(movieId);
+                }
+                writer.write(line + "\n");
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
