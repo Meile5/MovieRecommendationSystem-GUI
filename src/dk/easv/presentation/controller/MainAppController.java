@@ -102,21 +102,13 @@ public class MainAppController implements Initializable {
                 } else {
                     try {
                         String imageUrl = getImageUrl(item);
-                        Object m;
-                        //System.out.println(imageUrl);
-                        if (imageUrl != null) {
-                            if (item instanceof TopMovie){
-                                m = ((TopMovie) item).getMovie();
-                            } else {
-                                m = item;
-                            }
-
-                            Movie movie = (Movie) m;
-                            imageView.setFitHeight(250);
-                            imageView.setFitWidth(200);
+                        if (imageUrl != null && !imageUrl.isEmpty()) {
+                            Movie movie = item instanceof TopMovie ? ((TopMovie) item).getMovie() : (Movie) item;
+                            //imageView.setFitHeight(250);
+                            imageView.setFitWidth(400);
                             imageView.setPreserveRatio(true);
-                            imageView.setImage(new Image(imageUrl, true)); // When background loading is enabled, the image will be loaded asynchronously (not freezing the UI)
-                            titleLabel.setText(movie.getTitle()); // Set the title of the movie
+                            imageView.setImage(new Image(imageUrl, true));
+                            titleLabel.setText(movie.getTitle());
                             setGraphic(new VBox(imageView, titleLabel));
                         } else {
                             setText("No Image Available");
@@ -127,6 +119,7 @@ public class MainAppController implements Initializable {
                     }
                 }
             }
+
         });
     }
 
@@ -134,7 +127,7 @@ public class MainAppController implements Initializable {
     private <T> String getImageUrl(T item) throws IOException {
         if (item instanceof Movie movie) {
             if (Objects.equals(movie.getPosterPath(), "NO POSTER FOUND")) {
-                return "https://images.unsplash.com/photo-1706859450156-0214dca4260d?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; //TODO: put whatever image you want to display when no poster is found
+                return "https://img.freepik.com/free-photo/movie-background-collage_23-2149876010.jpg?w=1380&t=st=1707493292~exp=1707493892~hmac=99da9616d90f0d2f44960de681c9dbf9b02090cb26818d371374e831b72f0cf9"; //TODO: put whatever image you want to display when no poster is found
             }
 
             return movie.getPosterPath();
