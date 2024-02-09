@@ -1,6 +1,5 @@
 .background {
-     -fx-background-color: radial-gradient(center 95% 105% , radius 35%, rgba(246, 80, 22, 0.48), #0c0502);
-}
+    -fx-background-color: radial-gradient(center 95% 115% , radius 40%, rgba(246, 80, 22, 0.35), #150903);}
 
 .list-view {
     -fx-background-color: transparent;

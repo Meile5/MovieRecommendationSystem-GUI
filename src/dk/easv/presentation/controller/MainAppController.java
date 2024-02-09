@@ -101,14 +101,21 @@ public class MainAppController implements Initializable {
                 } else {
                     try {
                         String imageUrl = getImageUrl(item);
+                        Object m;
                         //System.out.println(imageUrl);
                         if (imageUrl != null) {
-                            imageView.setFitHeight(250);
-                            //imageView.setFitWidth(200);
+                            if (item instanceof TopMovie){
+                                m = ((TopMovie) item).getMovie();
+                            } else {
+                                m = item;
+                            }
 
+                            Movie movie = (Movie) m;
+                            imageView.setFitHeight(250);
+                            imageView.setFitWidth(200);
                             imageView.setPreserveRatio(true);
                             imageView.setImage(new Image(imageUrl, true)); // When background loading is enabled, the image will be loaded asynchronously (not freezing the UI)
-                            titleLabel.setText(((Movie)item).getTitle()); // Set the title of the movie
+                            titleLabel.setText(movie.getTitle()); // Set the title of the movie
                             setGraphic(new VBox(imageView, titleLabel));
                         } else {
                             setText("No Image Available");
@@ -130,6 +137,9 @@ public class MainAppController implements Initializable {
             }
 
             return movie.getPosterPath();
+        }
+        else if (item instanceof TopMovie tm) {
+            return getImageUrl(((TopMovie)item).getMovie());
         }
         // Add other conditions for different item types if needed
         return null;

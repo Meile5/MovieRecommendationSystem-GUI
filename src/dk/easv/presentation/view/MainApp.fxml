@@ -86,7 +86,7 @@
                         </ImageView>
                         <Button fx:id="UsersButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="77.0" style="-fx-background-color: transparent;" text="Button">
                            <graphic>
-                              <ImageView fitHeight="49.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="49.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../CSS/user.png" />
                                  </image>
@@ -101,7 +101,7 @@
                         <Insets bottom="30.0" left="280.0" top="40.0" />
                      </HBox.margin>
                      <padding>
-                        <Insets top="5.0" />
+                        <Insets right="5.0" top="5.0" />
                      </padding>
                      <opaqueInsets>
                         <Insets />
