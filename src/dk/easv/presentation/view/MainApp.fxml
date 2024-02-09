@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,6 +10,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <MFXScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1200.0" styleClass="background" stylesheets="@../CSS/style1.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
    <content>
@@ -42,24 +45,76 @@
                         <Insets left="-20.0" />
                      </HBox.margin>
                   </ImageView>
+                  <Label text="Top Similar Movies">
+                     <padding>
+                        <Insets left="20.0" top="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Label">
+                     <padding>
+                        <Insets left="20.0" top="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Label">
+                     <padding>
+                        <Insets left="20.0" top="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="Label">
+                     <padding>
+                        <Insets left="20.0" top="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </HBox>
-            <ListView fx:id="lvTopSimilarUsers" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
-               </GridPane.margin></ListView>
-            <ListView fx:id="lvTopForUser" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+               </GridPane.margin>
+               <children>
+                  <Label text="Top Similar Movies" />
+                  <ListView fx:id="lvTopSimilarUsers" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
+               </children>
+            </VBox>
+            <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
-               </GridPane.margin></ListView>
-            <ListView fx:id="lvTopAvgNotSeen" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
+               </GridPane.margin>
+               <children>
+                  <Label text="Top For User" />
+                  <ListView fx:id="lvTopForUser" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
+               </children>
+            </VBox>
+            <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
-               </GridPane.margin></ListView>
-            <ListView fx:id="lvTopFromSimilar" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+               </GridPane.margin>
+               <children>
+                  <Label text="Label" />
+                  <ListView fx:id="lvTopAvgNotSeen" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" />
+               </children>
+            </VBox>
+            <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
-               </GridPane.margin></ListView>
+               </GridPane.margin>
+               <children>
+                  <Label text="Label" />
+                  <ListView fx:id="lvTopFromSimilar" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
+               </children>
+            </VBox>
          </children>
       </GridPane>
    </content>
