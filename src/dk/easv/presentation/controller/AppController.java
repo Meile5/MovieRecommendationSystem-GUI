@@ -104,8 +104,8 @@ public class AppController implements Initializable {
                         String imageUrl = getImageUrl(item);
                         //System.out.println(imageUrl);
                         if (imageUrl != null) {
-                            imageView.setFitHeight(200);
-                            imageView.setFitWidth(150);
+                            imageView.setFitHeight(250);
+                            imageView.setFitWidth(200);
                             imageView.setPreserveRatio(true);
                             imageView.setImage(new Image(imageUrl, true)); // When background loading is enabled, the image will be loaded asynchronously (not freezing the UI)
                             titleLabel.setText(((Movie)item).getTitle()); // Set the title of the movie

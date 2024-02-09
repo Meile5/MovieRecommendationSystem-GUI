@@ -18,10 +18,10 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="92.0" minHeight="130.0" prefHeight="91.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="200.0" minHeight="300.0" prefHeight="300.0" valignment="CENTER" vgrow="ALWAYS" />
-            <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="300.0" prefHeight="300.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
             <HBox minHeight="130.0">
@@ -44,19 +44,19 @@
                   </ImageView>
                </children>
             </HBox>
-            <ListView fx:id="lvTopSimilarUsers" minHeight="300.0" orientation="HORIZONTAL" prefHeight="100.0" prefWidth="1158.0" stylesheets="@../CSS/style1.css" GridPane.rowIndex="1">
+            <ListView fx:id="lvTopSimilarUsers" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></ListView>
-            <ListView fx:id="lvTopForUser" minHeight="300.0" orientation="HORIZONTAL" prefHeight="100.0" stylesheets="@../CSS/style1.css" GridPane.rowIndex="2">
+            <ListView fx:id="lvTopForUser" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></ListView>
-            <ListView fx:id="lvTopAvgNotSeen" minHeight="300.0" orientation="HORIZONTAL" prefHeight="152.0" prefWidth="1158.0" GridPane.rowIndex="3">
+            <ListView fx:id="lvTopAvgNotSeen" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></ListView>
-            <ListView fx:id="lvTopFromSimilar" minHeight="300.0" orientation="HORIZONTAL" prefHeight="100.0" stylesheets="@../CSS/style1.css" GridPane.rowIndex="4">
+            <ListView fx:id="lvTopFromSimilar" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin></ListView>

@@ -1,9 +1,9 @@
 .background {
-     -fx-background-color: radial-gradient(center 80% 90% , radius 50%, #ff7f50, #1a0b05);
+     -fx-background-color: radial-gradient(center 95% 105% , radius 35%, rgba(246, 80, 22, 0.48), #1a0b05);
 }
 
 .list-view {
-            -fx-background-color: radial-gradient(center 80% 90% , radius 50%, #ff7f50, #1a0b05);   
+    -fx-background-color: radial-gradient(center 50% 120% , radius 35%, rgba(246, 80, 22, 0.48), #1a0b05);
 }
 
 .label {
@@ -11,5 +11,5 @@
 }
 
 .list-cell {
-             -fx-background-color: transparent;
+      -fx-background-color: transparent;
 }

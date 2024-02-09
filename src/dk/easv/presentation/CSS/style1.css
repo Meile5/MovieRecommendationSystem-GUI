@@ -1,15 +1,16 @@
 .background {
-     -fx-background-color: radial-gradient(center 80% 90% , radius 50%, #ff7f50, #1a0b05);
+     -fx-background-color: radial-gradient(center 95% 105% , radius 35%, rgba(246, 80, 22, 0.48), #1a0b05);
 }
 
 .list-view {
-            -fx-background-color: radial-gradient(center 80% 90% , radius 50%, #ff7f50, #1a0b05);   
+    -fx-background-color: radial-gradient(center 85% 115% , radius 25%, rgba(246, 80, 22, 0.48), #1a0b05);
 }
 
 .label {
-    -fx-text-fill: pink;
+    -fx-text-fill: rgb(241, 128, 66);
+    -fx-font-size: 18;
 }
 
 .list-cell {
-             -fx-background-color: transparent;
+      -fx-background-color: transparent;
 }
