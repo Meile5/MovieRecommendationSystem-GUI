@@ -15,7 +15,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<MFXScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1200.0" styleClass="background" stylesheets="@../CSS/style1.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.AppController">
+
+<MFXScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1200.0" styleClass="background" stylesheets="@../CSS/style1.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainAppController">
+
    <content>
       <GridPane styleClass="background" vgap="20.0">
          <columnConstraints>
@@ -23,13 +25,19 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="92.0" minHeight="130.0" prefHeight="91.0" vgrow="SOMETIMES" />
+
+            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+
             <RowConstraints minHeight="350.0" prefHeight="350.0" vgrow="ALWAYS" />
             <RowConstraints minHeight="300.0" prefHeight="300.0" valignment="CENTER" vgrow="ALWAYS" />
             <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="ALWAYS" />
             <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
-            <HBox minHeight="130.0" prefHeight="130.0" prefWidth="1198.0">
+            <HBox minHeight="130.0">
                <children>
                   <ImageView fitHeight="66.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -47,15 +55,7 @@
                         <Insets left="-20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Home">
-                     <padding>
-                        <Insets left="50.0" top="40.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label text="Movies">
+                  <Label text="Top Rated Movies">
                      <padding>
                         <Insets left="20.0" top="40.0" />
                      </padding>
@@ -63,7 +63,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label text="TV Shows">
+                  <Label text="Blockbuster Movies">
                      <padding>
                         <Insets left="20.0" top="40.0" />
                      </padding>
@@ -71,7 +71,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label text="My List">
+                  <Label text="Movie Suggestions">
                      <padding>
                         <Insets left="20.0" top="40.0" />
                      </padding>
@@ -104,7 +104,7 @@
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="30.0" left="240.0" top="40.0" />
+                        <Insets bottom="30.0" left="280.0" top="40.0" />
                      </HBox.margin>
                      <padding>
                         <Insets top="5.0" />
@@ -120,8 +120,9 @@
                   <Insets />
                </GridPane.margin>
                <children>
-                  <Label text="Top Similar Movies" />
-                  <ListView fx:id="lvTopSimilarUsers" minHeight="215.0" orientation="HORIZONTAL" prefHeight="313.0" prefWidth="1198.0" stylesheets="@../CSS/style1.css" />
+
+                  <Label text="Top Rated Movies" />
+                  <ListView fx:id="lvTopSimilarUsers" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
                </children>
             </VBox>
             <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
@@ -129,8 +130,10 @@
                   <Insets />
                </GridPane.margin>
                <children>
-                  <Label text="Top For User" />
-                  <ListView fx:id="lvTopForUser" minHeight="209.0" orientation="HORIZONTAL" prefHeight="263.0" prefWidth="1198.0" stylesheets="@../CSS/style1.css" />
+
+                  <Label text="Blockbuster Movies" />
+                  <ListView fx:id="lvTopForUser" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
+
                </children>
             </VBox>
             <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
@@ -138,17 +141,8 @@
                   <Insets />
                </GridPane.margin>
                <children>
-                  <Label text="Label" />
-                  <ListView fx:id="lvTopAvgNotSeen" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" />
-               </children>
-            </VBox>
-            <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <children>
-                  <Label text="Label" />
-                  <ListView fx:id="lvTopFromSimilar" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
+                  <Label text="Movie Suggestions" />
+                  <ListView fx:id="lvTopAvgNotSeen" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" />
                </children>
             </VBox>
          </children>

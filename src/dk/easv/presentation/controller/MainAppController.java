@@ -1,9 +1,10 @@
 package dk.easv.presentation.controller;
 
-import dk.easv.APIService.APIConnection;
-import dk.easv.entities.*;
+import dk.easv.entities.Movie;
+import dk.easv.entities.TopMovie;
+import dk.easv.entities.User;
+import dk.easv.entities.UserSimilarity;
 import dk.easv.presentation.model.AppModel;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -13,25 +14,24 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 
-public class AppController implements Initializable {
-    //@FXML
-    //private ListView<User> lvUsers;
+public class MainAppController implements Initializable {
+    @FXML
+    private ListView<User> lvUsers;
     @FXML
     private ListView<Movie> lvTopForUser;
     @FXML
     private ListView<Movie> lvTopAvgNotSeen;
     @FXML
     private ListView<UserSimilarity> lvTopSimilarUsers;
+
     @FXML
     private ListView<TopMovie> lvTopFromSimilar;
 
@@ -54,19 +54,18 @@ public class AppController implements Initializable {
         lvTopForUser.setItems(model.getObsTopMovieSeen());
         lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
         lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
-        lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
+        //lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
 
         startTimer("Load users");
         model.loadUsers();
         stopTimer();
 
-        /*
-        lvUsers.getSelectionModel().selectedItemProperty().addListener(
+
+        /*lvUsers.getSelectionModel().selectedItemProperty().addListener(
                 (observableValue, oldUser, selectedUser) -> {
                     startTimer("Loading all data for user: " + selectedUser);
                     model.loadData(selectedUser);
                 });*/
-
         //Select the logged-in user in the listview, automagically trigger the listener above
         //lvUsers.getSelectionModel().select(model.getObsLoggedInUser());
 
@@ -78,7 +77,7 @@ public class AppController implements Initializable {
         setCustomCellFactory(lvTopForUser);
         setCustomCellFactory(lvTopAvgNotSeen);
         setCustomCellFactory(lvTopSimilarUsers);
-        setCustomCellFactory(lvTopFromSimilar);
+        //setCustomCellFactory(lvTopFromSimilar);
     }
 
     // Set custom cell factory for ListView to display movie images
@@ -105,7 +104,8 @@ public class AppController implements Initializable {
                         //System.out.println(imageUrl);
                         if (imageUrl != null) {
                             imageView.setFitHeight(250);
-                            //imageView.setFitWidth();
+                            //imageView.setFitWidth(200);
+
                             imageView.setPreserveRatio(true);
                             imageView.setImage(new Image(imageUrl, true)); // When background loading is enabled, the image will be loaded asynchronously (not freezing the UI)
                             titleLabel.setText(((Movie)item).getTitle()); // Set the title of the movie
