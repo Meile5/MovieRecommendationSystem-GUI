@@ -1,5 +1,5 @@
 .background {
-    -fx-background-color: radial-gradient(center 95% 115% , radius 40%, rgba(246, 80, 22, 0.35), #150903);}
+    -fx-background-color: #000000}
 
 .list-view {
     -fx-background-color: transparent;
@@ -14,5 +14,11 @@
       -fx-background-color: transparent;
 }
 .text-field{
-    -fx-background-color: rgb(241, 128, 66, 0.85);
+    -fx-background-color:#212121;
+
 }
+.list-view .scroll-bar {
+     -fx-background-color: orange;
+    
+
+ }

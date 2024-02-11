@@ -267,7 +267,7 @@
 267,1994,Touched by an Angel: Season 1
 268,1980,The Final Countdown
 269,1989,Parenthood
-270,2001,Sex and the City: Season 4
+270,2001,Six and the City: Season 4
 271,1943,Saludos Amigos
 272,1973,Female Yakuza Tale
 273,2004,Taxi
@@ -5757,7 +5757,7 @@
 5757,1957,Do Ankhen Barah Haath
 5758,1981,The Aviator's Wife
 5759,2003,Empires: Kingdom of David: The Saga of the Israelites
-5760,2001,The Sopranos: Season 3
+5760,2001,The Soopranos: Season 3
 5761,2001,Dawson's Creek: Season 5
 5762,2000,Almost Famous
 5763,2004,Earthquake: Nature Unleashed
@@ -8112,7 +8112,7 @@
 8113,1994,Sweet Valley High: Season 1
 8114,1999,A Man
 8115,2000,Virgin Fleet
-8116,2002,The Sopranos: Season 4
+8116,2002,The Soopranos: Season 4
 8117,1982,Pink Floyd: The Wall
 8118,1997,Spawn: The Movie
 8119,2002,Detour
@@ -11159,7 +11159,7 @@
 11161,2000,The Next Best Thing
 11162,2001,Kung Fu Master
 11163,1998,Nazca: Blades of Fate
-11164,2000,Sex and the City: Season 3
+11164,2000,Six and the City: Season 3
 11165,1968,2001: A Space Odyssey
 11166,2004,A Very Long Engagement
 11167,2003,One Tree Hill: Season 1
@@ -11657,7 +11657,7 @@
 11659,2001,Medabots
 11660,1991,35 Up
 11661,1984,Friday the 13th: Part 4: The Final Chapter
-11662,2004,The Sopranos: Season 5
+11662,2004,The Soopranos: Season 5
 11663,2000,Final Destination
 11664,1951,Sirocco
 11665,1999,Hide and Seek
@@ -12179,7 +12179,7 @@
 12181,1995,In the Mouth of Madness
 12182,1942,Random Harvest
 12183,1971,Donkey Skin
-12184,2002,Sex and the City: Season 5
+12184,2002,Six and the City: Season 5
 12185,2002,The Nest
 12186,1971,The French Connection
 12187,1963,Fright Night Horror Classics: Vol. 2: Dementia 13
@@ -12525,7 +12525,7 @@
 12527,2003,Newlyweds: Nick & Jessica: Season 1
 12528,2001,Final
 12529,1998,Darkness Falls
-12530,2004,Sex and the City: Season 6: Part 2
+12530,2004,Six and the City: Season 6: Part 2
 12531,1991,Eerie
 12532,2004,Sonic Youth: Corporate Ghost: The Videos 1990-2002
 12533,1994,Country Life
@@ -13124,7 +13124,7 @@
 13126,2004,Relative Evil
 13127,2003,The Hard Road
 13128,1987,Wall Street
-13129,1998,Sex and the City: Season 1
+13129,1998,Six and the City: Season 1
 13130,1952,Sudden Fear
 13131,1978,Edward & Mrs. Simpson
 13132,1990,Hetty Wainthropp: Missing Persons
@@ -14297,7 +14297,7 @@
 14299,2004,Hum Tum
 14300,1992,City of Joy
 14301,1971,Sunday Bloody Sunday
-14302,2000,The Sopranos: Season 2
+14302,2000,The Soopranos: Season 2
 14303,1960,North to Alaska
 14304,1973,A Brief Vacation
 14305,1992,Wild Orchid 2
@@ -15065,7 +15065,7 @@
 15067,1995,The Wayans Bros.: Season 1
 15068,1998,Phantoms
 15069,1991,The Presidents Collection: The Democrats
-15070,1999,Sex and the City: Season 2
+15070,1999,Six and the City: Season 2
 15071,1995,The Outer Limits: The New Series: Sex and Science Fiction
 15072,2004,Two Brothers and a Bride
 15073,1966,The Avengers '66
@@ -15221,7 +15221,7 @@
 15223,2001,Osmosis Jones
 15224,2000,Screwed
 15225,2004,Curious George Rides a Bike
-15226,2002,Sopranos Unauthorized: Shooting Sites Uncovered
+15226,2002,Soopranos Unauthorized: Shooting Sites Uncovered
 15227,1999,A Paradise Under the Stars
 15228,1978,House Calls
 15229,1979,All Creatures Great and Small: Series 2
@@ -16141,7 +16141,7 @@
 16144,1984,Greystoke: The Legend of Tarzan
 16145,1997,Losing Control
 16146,2003,The Real Cancun
-16147,1999,The Sopranos: Season 1
+16147,1999,The Soopranos: Season 1
 16148,1976,Obsession
 16149,1999,Liberty Heights
 16150,1996,Shine
@@ -16704,7 +16704,7 @@
 16708,2002,The Child I Never Was
 16709,1980,Stardust Memories
 16710,1978,Sandbaggers: Collection 1
-16711,2003,Sex and the City: Season 6: Part 1
+16711,2003,Six and the City: Season 6: Part 1
 16712,1953,Donovan's Brain
 16713,1994,Corrina
 16714,1995,Hamish Macbeth: Season 1

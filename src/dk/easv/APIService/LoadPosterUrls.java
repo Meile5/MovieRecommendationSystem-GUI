@@ -103,6 +103,9 @@ public class LoadPosterUrls {
         System.out.println("hey");
         int apiMovieId = movieIds.get(movieId);
         String url = apiConnection.getMovieImages(apiMovieId);
+        if (url.matches("NO POSTER FOUND")){
+            url = apiConnection.getTVImages(apiMovieId);
+        }
         System.out.println(url);
         moviePosters.put(movieId, url);
     }
@@ -136,6 +139,9 @@ public class LoadPosterUrls {
     private void getMovieId(Movie movie) {
         try {
             int movieId = apiConnection.searchMovie(movie);
+            if(movieId == -1){
+                movieId = apiConnection.SearchTVShow(movie);
+            }
             movieIds.put(movie.getId(), movieId);
         } catch (Exception e) {
             e.printStackTrace();

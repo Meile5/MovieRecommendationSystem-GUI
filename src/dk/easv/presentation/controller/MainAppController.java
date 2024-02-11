@@ -65,9 +65,9 @@ public class MainAppController implements Initializable {
                 (observableValue, oldUser, selectedUser) -> {
                     startTimer("Loading all data for user: " + selectedUser);
                     model.loadData(selectedUser);
-                });*/
+                });
         //Select the logged-in user in the listview, automagically trigger the listener above
-        //lvUsers.getSelectionModel().select(model.getObsLoggedInUser());
+        lvUsers.getSelectionModel().select(model.getObsLoggedInUser());*/
 
 
     }
@@ -82,6 +82,7 @@ public class MainAppController implements Initializable {
 
     // Set custom cell factory for ListView to display movie images
     private <T> void setCustomCellFactory(ListView<T> listView) {
+
         listView.setCellFactory(param -> new ListCell<T>() {
             private final ImageView imageView = new ImageView();
             private final Label titleLabel = new Label();
@@ -89,8 +90,9 @@ public class MainAppController implements Initializable {
             {
                 titleLabel.setAlignment(Pos.BOTTOM_LEFT); // Align the title in the center
                 titleLabel.setWrapText(true); // Allow the title to wrap if it's too long
-                titleLabel.setMaxWidth(170);
+                titleLabel.setMaxWidth(370);
                 setContentDisplay(ContentDisplay.BOTTOM); // Display the graphic (image) above the text (title)
+
             }
 
             @Override
@@ -104,14 +106,20 @@ public class MainAppController implements Initializable {
                         String imageUrl = getImageUrl(item);
                         if (imageUrl != null && !imageUrl.isEmpty()) {
                             Movie movie = item instanceof TopMovie ? ((TopMovie) item).getMovie() : (Movie) item;
-                            //imageView.setFitHeight(250);
-                            imageView.setFitWidth(400);
-                            imageView.setPreserveRatio(true);
+                            imageView.setFitHeight(220);
+                            imageView.setFitWidth(370);
                             imageView.setImage(new Image(imageUrl, true));
                             titleLabel.setText(movie.getTitle());
-                            setGraphic(new VBox(imageView, titleLabel));
+
+
+                            VBox vBox = new VBox(imageView, titleLabel);
+                            vBox.setMaxWidth(370);
+                            vBox.setMaxHeight(220);
+
+
+                            setGraphic(vBox);
                         } else {
-                            setText("No Image Available");
+                            //setText("No Image Available");
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -127,7 +135,8 @@ public class MainAppController implements Initializable {
     private <T> String getImageUrl(T item) throws IOException {
         if (item instanceof Movie movie) {
             if (Objects.equals(movie.getPosterPath(), "NO POSTER FOUND")) {
-                return "https://img.freepik.com/free-photo/movie-background-collage_23-2149876010.jpg?w=1380&t=st=1707493292~exp=1707493892~hmac=99da9616d90f0d2f44960de681c9dbf9b02090cb26818d371374e831b72f0cf9"; //TODO: put whatever image you want to display when no poster is found
+                return null;
+                // return "https://img.freepik.com/free-photo/movie-background-collage_23-2149876010.jpg?w=1380&t=st=1707493292~exp=1707493892~hmac=99da9616d90f0d2f44960de681c9dbf9b02090cb26818d371374e831b72f0cf9"; //TODO: put whatever image you want to display when no poster is found
             }
 
             return movie.getPosterPath();
