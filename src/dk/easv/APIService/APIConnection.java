@@ -21,7 +21,9 @@ public class APIConnection {
     private static final String API_KEY = "7f40dd353832cce1a85eedc0ab2a60de";
     private static final String BASE_URL = "https://api.themoviedb.org/3";
     private static final String SEARCH_MOVIE_ENDPOINT = "/search/movie";
+    private static final String SEARCH_TV_ENDPOINT = "/search/tv";
     private static final String MOVIE_IMAGES_ENDPOINT = "/movie/%d/images";
+    private static final String TV_IMAGES_ENDPOINT = "/tv/%d/images";
     private JsonObject backdropObject;
 
     /**
@@ -34,6 +36,34 @@ public class APIConnection {
         String encodedTitle = URLEncoder.encode(movie.getTitle(), StandardCharsets.UTF_8);
 
         String endpoint = BASE_URL + SEARCH_MOVIE_ENDPOINT + "?api_key=" + API_KEY + "&query=" + encodedTitle + "&include_adult=true" + "&primary_release_year=" + movie.getYear();
+
+        HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
+        connection.setRequestMethod("GET");
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+            reader.close();
+            return extractMovieIdFromResponse(response.toString());
+        } else {
+            throw new IOException("Failed to search for movie. HTTP error code: " + responseCode);
+        }
+    }
+    public int SearchTVShow(Movie movie) throws IOException {
+        String encodedTitle = URLEncoder.encode(movie.getTitle(), StandardCharsets.UTF_8);
+        if(movie.getTitle().toLowerCase().contains("season")){
+            String movieTitle = movie.getTitle();
+            String[] split = movieTitle.split(":");
+            encodedTitle = URLEncoder.encode(split[0], StandardCharsets.UTF_8);
+
+        }
+
+        String endpoint = BASE_URL + SEARCH_TV_ENDPOINT + "?api_key=" + API_KEY + "&query=" + encodedTitle + "&include_adult=true";
 
         HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
         connection.setRequestMethod("GET");
@@ -79,7 +109,47 @@ public class APIConnection {
         if (movieId == -1) return "NO POSTER FOUND"; // Movie not found
 
         var result = "NO POSTER FOUND";
-        String endpoint = String.format(BASE_URL + MOVIE_IMAGES_ENDPOINT, movieId) + "?api_key=" + API_KEY;
+
+       String endpoint = String.format(BASE_URL + MOVIE_IMAGES_ENDPOINT, movieId) + "?api_key=" + API_KEY;
+
+       HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
+        connection.setRequestMethod("GET");
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+            reader.close();
+
+            List<String> imageUrls = new ArrayList<>();
+            JsonObject jsonObject = JsonParser.parseString(response.toString()).getAsJsonObject();
+            JsonArray backdropsArray = jsonObject.getAsJsonArray("backdrops");
+            for (JsonElement backdropElement : backdropsArray) {
+                JsonObject backdropObject = backdropElement.getAsJsonObject();
+                System.out.println(backdropObject.get("file_path").getAsString());
+                String imageUrl = "https://image.tmdb.org/t/p/original" + backdropObject.get("file_path").getAsString();
+                imageUrls.add(imageUrl);
+            }
+
+            if (imageUrls.size() > 0) {
+                result = imageUrls.get(0);
+            }
+        } else {
+            if (responseCode == 429)
+                throw new RuntimeException("Rate limit exceeded. Please wait a few seconds and try again.");
+        }
+        return result;
+    }
+    public String getTVImages(int movieId) throws IOException {
+        if (movieId == -1) return "NO POSTER FOUND"; // Movie not found
+
+        var result = "NO POSTER FOUND";
+
+        String endpoint = String.format(BASE_URL + TV_IMAGES_ENDPOINT, movieId) + "?api_key=" + API_KEY;
 
         HttpURLConnection connection = (HttpURLConnection) new URL(endpoint).openConnection();
         connection.setRequestMethod("GET");
