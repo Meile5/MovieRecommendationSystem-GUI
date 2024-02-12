@@ -49,33 +49,37 @@
                         <Insets left="-20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Top Rated Movies">
-                     <padding>
-                        <Insets left="20.0" top="40.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label text="Blockbuster Movies">
-                     <padding>
-                        <Insets left="20.0" top="40.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label text="Movie Suggestions">
-                     <padding>
-                        <Insets left="20.0" top="40.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <HBox alignment="TOP_CENTER" prefHeight="75.0" prefWidth="307.0">
+                  <HBox>
                      <children>
-                        <TextField alignment="TOP_CENTER" />
+                        <Label prefHeight="63.0" prefWidth="170.0" text="Top Rated Movies">
+                           <padding>
+                              <Insets left="10.0" top="40.0" />
+                           </padding>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="63.0" prefWidth="170.0" text="Blockbuster Movies">
+                           <padding>
+                              <Insets left="10.0" top="40.0" />
+                           </padding>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="67.0" prefWidth="170.0" text="Movie Suggestions">
+                           <padding>
+                              <Insets left="10.0" top="40.0" />
+                           </padding>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="340.0">
+                     <children>
+                        <TextField alignment="TOP_CENTER" prefHeight="25.0" prefWidth="142.0" />
                         <ImageView fitHeight="35.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../CSS/searching.png" />
@@ -93,12 +97,12 @@
                               </ImageView>
                            </graphic>
                            <HBox.margin>
-                              <Insets left="30.0" top="-15.0" />
+                              <Insets left="50.0" top="-15.0" />
                            </HBox.margin>
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="30.0" left="280.0" top="40.0" />
+                        <Insets bottom="30.0" left="100.0" top="40.0" />
                      </HBox.margin>
                      <padding>
                         <Insets right="5.0" top="5.0" />
@@ -109,16 +113,6 @@
                   </HBox>
                </children>
             </HBox>
-            <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <children>
-
-                  <Label text="Top Rated Movies" />
-                  <ListView fx:id="lvTopSimilarUsers" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
-               </children>
-            </VBox>
             <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
                <GridPane.margin>
                   <Insets />
@@ -137,6 +131,13 @@
                <children>
                   <Label text="Movie Suggestions" />
                   <ListView fx:id="lvTopAvgNotSeen" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" />
+                  <VBox>
+                     <children>
+      
+                        <Label text="Top Rated Movies" />
+                        <ListView fx:id="lvTopFromSimilar" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
+                     </children>
+                  </VBox>
                </children>
             </VBox>
          </children>

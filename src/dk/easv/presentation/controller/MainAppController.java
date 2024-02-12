@@ -54,20 +54,20 @@ public class MainAppController implements Initializable {
         lvTopForUser.setItems(model.getObsTopMovieSeen());
         lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
         lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
-        //lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
+        lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
 
         startTimer("Load users");
         model.loadUsers();
         stopTimer();
 
 
-        /*lvUsers.getSelectionModel().selectedItemProperty().addListener(
+        lvUsers.getSelectionModel().selectedItemProperty().addListener(
                 (observableValue, oldUser, selectedUser) -> {
                     startTimer("Loading all data for user: " + selectedUser);
                     model.loadData(selectedUser);
-                });*/
+                });
         //Select the logged-in user in the listview, automagically trigger the listener above
-        //lvUsers.getSelectionModel().select(model.getObsLoggedInUser());
+        lvUsers.getSelectionModel().select(model.getObsLoggedInUser());
 
 
     }
@@ -76,8 +76,8 @@ public class MainAppController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCustomCellFactory(lvTopForUser);
         setCustomCellFactory(lvTopAvgNotSeen);
-        setCustomCellFactory(lvTopSimilarUsers);
-        //setCustomCellFactory(lvTopFromSimilar);
+        //setCustomCellFactory(lvTopSimilarUsers);
+        setCustomCellFactory(lvTopFromSimilar);
     }
 
     // Set custom cell factory for ListView to display movie images
@@ -125,14 +125,14 @@ public class MainAppController implements Initializable {
 
     // Get image URL based on the item type
     private <T> String getImageUrl(T item) throws IOException {
+
         if (item instanceof Movie movie) {
             if (Objects.equals(movie.getPosterPath(), "NO POSTER FOUND")) {
                 return "https://img.freepik.com/free-photo/movie-background-collage_23-2149876010.jpg?w=1380&t=st=1707493292~exp=1707493892~hmac=99da9616d90f0d2f44960de681c9dbf9b02090cb26818d371374e831b72f0cf9"; //TODO: put whatever image you want to display when no poster is found
             }
-
             return movie.getPosterPath();
         }
-        else if (item instanceof TopMovie tm) {
+        else if (item instanceof TopMovie) {
             return getImageUrl(((TopMovie)item).getMovie());
         }
         // Add other conditions for different item types if needed
