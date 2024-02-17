@@ -1,6 +1,9 @@
 package dk.easv.APIService;
 
 import dk.easv.entities.Movie;
+import dk.easv.presentation.model.AppModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -18,6 +21,7 @@ public class LoadPosterUrls {
     private final ConcurrentHashMap<Integer, Integer> movieIds = new ConcurrentHashMap<>(); // For storing API's movie IDs <app movie ID, API movie ID>
     private static final ConcurrentHashMap<Integer, String> moviePosters = new ConcurrentHashMap<>();
     private List<Movie> movies = new ArrayList<>();
+    private AppModel model;
 
     public static void main(String[] args) {
         System.out.println("hey");
@@ -123,7 +127,8 @@ public class LoadPosterUrls {
         }
     }
 
-    private void loadAllMovies() {
+    public List<Movie> loadAllMovies() {
+        List<Movie> movies = new ArrayList<>();
         try {
             List<String> movieLines = Files.readAllLines(Path.of("data/movie_titles.txt"));
             for (String movieLine : movieLines) {
@@ -134,7 +139,10 @@ public class LoadPosterUrls {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return movies;
     }
+
+
 
     private void getMovieId(Movie movie) {
         try {
