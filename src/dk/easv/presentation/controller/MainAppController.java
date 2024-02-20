@@ -5,19 +5,21 @@ import dk.easv.entities.TopMovie;
 import dk.easv.entities.User;
 import dk.easv.entities.UserSimilarity;
 import dk.easv.presentation.model.AppModel;
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -30,14 +32,17 @@ public class MainAppController implements Initializable {
     @FXML
     private ListView<Movie> lvTopAvgNotSeen;
     @FXML
-   private ListView<UserSimilarity> lvTopSimilarUsers;
-
+    private ListView<UserSimilarity> lvTopSimilarUsers;
     @FXML
     private ListView<TopMovie> lvTopFromSimilar;
-
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Label blockBusterMoviesLbl;
     private AppModel model;
     private long timerStartMillis = 0;
     private String timerMsg = "";
+
 
     private void startTimer(String message) {
         timerStartMillis = System.currentTimeMillis();
@@ -51,23 +56,17 @@ public class MainAppController implements Initializable {
     public void setModel(AppModel model) {
         this.model = model;
 
-        lvTopForUser.setItems(model.getObsTopMovieSeen());
+        lvTopForUser.setItems(model.getObsTopMovieNotSeen());
         lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
-        //lvTopSimilarUsers.setItems(model.getObsSimilarUsers());
         lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
 
         startTimer("Load users");
         model.loadUsers();
         stopTimer();
 
-
-        /*lvUsers.getSelectionModel().selectedItemProperty().addListener(
-                (observableValue, oldUser, selectedUser) -> {
-                    startTimer("Loading all data for user: " + selectedUser);
-                    model.loadData(selectedUser);
-                });
-        //Select the logged-in user in the listview, automagically trigger the listener above
-        lvUsers.getSelectionModel().select(model.getObsLoggedInUser());*/
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterMovies(newValue);
+        });
 
 
     }
@@ -76,8 +75,11 @@ public class MainAppController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCustomCellFactory(lvTopForUser);
         setCustomCellFactory(lvTopAvgNotSeen);
-       // setCustomCellFactory(lvTopSimilarUsers);
         setCustomCellFactory(lvTopFromSimilar);
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterMovies(newValue); // Call filterMovies method whenever the text changes
+        });
     }
 
     // Set custom cell factory for ListView to display movie images
@@ -92,7 +94,6 @@ public class MainAppController implements Initializable {
                 titleLabel.setWrapText(true); // Allow the title to wrap if it's too long
                 titleLabel.setMaxWidth(370);
                 setContentDisplay(ContentDisplay.BOTTOM); // Display the graphic (image) above the text (title)
-
             }
 
             @Override
@@ -107,19 +108,16 @@ public class MainAppController implements Initializable {
                         if (imageUrl != null && !imageUrl.isEmpty()) {
                             Movie movie = item instanceof TopMovie ? ((TopMovie) item).getMovie() : (Movie) item;
                             imageView.setFitHeight(220);
-                            imageView.setFitWidth(370);
+                            imageView.setFitWidth(350);
                             imageView.setImage(new Image(imageUrl, true));
                             titleLabel.setText(movie.getTitle());
 
-
-                            VBox vBox = new VBox(imageView, titleLabel);
-                            vBox.setMaxWidth(370);
+                            VBox vBox = new VBox();
+                            vBox.getChildren().addAll(imageView, titleLabel);
+                            vBox.setMaxWidth(380);
                             vBox.setMaxHeight(220);
 
-
                             setGraphic(vBox);
-                        } else {
-                            //setText("No Image Available");
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -136,7 +134,6 @@ public class MainAppController implements Initializable {
         if (item instanceof Movie movie) {
             if (Objects.equals(movie.getPosterPath(), "NO POSTER FOUND")) {
                 return null;
-                // return "https://img.freepik.com/free-photo/movie-background-collage_23-2149876010.jpg?w=1380&t=st=1707493292~exp=1707493892~hmac=99da9616d90f0d2f44960de681c9dbf9b02090cb26818d371374e831b72f0cf9"; //TODO: put whatever image you want to display when no poster is found
             }
 
             return movie.getPosterPath();
@@ -147,4 +144,30 @@ public class MainAppController implements Initializable {
         // Add other conditions for different item types if needed
         return null;
     }
+
+    private void filterMovies(String searchTerm) {
+        // Get the list of all movies from the model
+        List<Movie> allMovies = model.getObsTopMovieNotSeen();
+
+        // Create a list to store filtered movies
+        List<Movie> filteredMovies = new ArrayList<>();
+
+        // Filter movies based on the search term
+        for (Movie movie : allMovies) {
+            if (movie.getTitle().toLowerCase().trim().contains(searchTerm.toLowerCase().trim())) {
+                filteredMovies.add(movie);
+            }
+        }
+
+        // Convert the filtered list to ObservableList
+        ObservableList<Movie> observableFilteredMovies = FXCollections.observableArrayList(filteredMovies);
+
+        Platform.runLater(() -> {
+            lvTopForUser.setItems(observableFilteredMovies);
+            blockBusterMoviesLbl.setText(searchTerm.isEmpty() ? "Blockbuster Movies" : "Search result: " + searchTerm);
+        });
+    }
+
+
+
 }

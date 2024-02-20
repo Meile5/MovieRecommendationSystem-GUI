@@ -49,4 +49,5 @@ public class TopMovie {
         return movie +
                 ", rating=" + rawRatings;
     }
+
 }

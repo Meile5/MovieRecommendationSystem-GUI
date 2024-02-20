@@ -2,11 +2,16 @@ package dk.easv.logic;
 
 import dk.easv.dataaccess.DataAccessManager;
 import dk.easv.entities.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.*;
 
 public class LogicManager {
 
     DataAccessManager dataMgr = new DataAccessManager();
+
+    public ObservableList<Movie> allMovies = FXCollections.observableArrayList();
 
     public void reloadAllDataFromStorage(){
         dataMgr.updateCacheFromDisk();
@@ -115,4 +120,5 @@ public class LogicManager {
             return null;
         }
     }
+
 }

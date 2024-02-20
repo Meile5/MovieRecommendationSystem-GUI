@@ -1,24 +1,25 @@
+
+
 .background {
-    -fx-background-color: #000000}
+    -fx-background-color: linear-gradient(to bottom right, #170d01 20%, #180a01 70%, #422000 120%);
+}
 
 .list-view {
     -fx-background-color: transparent;
 }
 
 .label {
-    -fx-text-fill: #ededed;
+    -fx-text-fill: white;
     -fx-font-size: 18;
+    -fx-padding: 20 0 0 0;
 }
 
 .list-cell {
       -fx-background-color: transparent;
 }
-.text-field{
-    -fx-background-color:#212121;
 
-}
 .list-view .scroll-bar {
-     -fx-background-color: orange;
+     -fx-background-color: black;
 
 
  }

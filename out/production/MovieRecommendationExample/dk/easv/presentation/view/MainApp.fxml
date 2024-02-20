@@ -17,154 +17,182 @@
 
 <MFXScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1200.0" styleClass="background" stylesheets="@../CSS/style1.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainAppController">
 
-   <content>
-      <GridPane styleClass="background" vgap="20.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="142.0" minHeight="130.0" prefHeight="130.0" vgrow="SOMETIMES" />
+    <content>
+        <GridPane hgap="20.0" styleClass="background" vgap="20.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="142.0" minHeight="130.0" prefHeight="130.0" vgrow="SOMETIMES" />
 
-            <RowConstraints maxHeight="327.0" minHeight="315.0" prefHeight="327.0" valignment="CENTER" vgrow="ALWAYS" />
-            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
-            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
-            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
-            <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
-         </rowConstraints>
-         <children>
-            <HBox minHeight="130.0" prefWidth="1198.0">
-               <children>
-                  <ImageView fitHeight="66.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../CSS/logo2.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="60.0" top="20.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <ImageView fitHeight="98.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../CSS/logo3.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="-20.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <HBox prefHeight="103.0" prefWidth="491.0">
-                     <children>
-                        <Label prefHeight="67.0" prefWidth="98.0" text="TV Shows">
-                           <padding>
-                              <Insets left="20.0" top="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="64.0" prefWidth="83.0" text="Home">
-                           <padding>
-                              <Insets left="20.0" top="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label text="Movies">
-                           <padding>
-                              <Insets left="20.0" top="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label text="My List">
-                           <padding>
-                              <Insets left="20.0" top="40.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets left="38.0" />
-                     </HBox.margin>
-                  </HBox>
-                  <HBox alignment="TOP_CENTER" prefHeight="47.0" prefWidth="420.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <TextField alignment="TOP_CENTER" prefHeight="15.0" prefWidth="136.0" />
-                        <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../CSS/search2.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="20.0" top="-5.0" />
-                           </HBox.margin>
+                <RowConstraints maxHeight="327.0" minHeight="315.0" prefHeight="327.0" valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+            </rowConstraints>
+            <children>
+                <HBox minHeight="130.0" prefWidth="1198.0">
+                    <children>
+                        <ImageView fitHeight="66.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../CSS/logo2.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="60.0" top="20.0" />
+                            </HBox.margin>
                         </ImageView>
-                        <Button fx:id="UsersButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../CSS/orangeUser.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
+                        <ImageView fitHeight="98.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../CSS/logo3.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="-20.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <HBox prefHeight="103.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label text="Movies">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
                            <HBox.margin>
-                              <Insets left="30.0" top="-10.0" />
+                              <Insets left="20.0" right="20.0" />
                            </HBox.margin>
-                        </Button>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="30.0" left="280.0" top="40.0" />
-                     </HBox.margin>
+                                </Label>
+                                <Label text="TV Shows">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                                </Label>
+                                <Label text="Home">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                                </Label>
+                                <Label text="My List">
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                                </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets left="38.0" />
+                            </HBox.margin>
                      <padding>
-                        <Insets right="5.0" top="5.0" />
+                        <Insets top="20.0" />
                      </padding>
-                     <opaqueInsets>
+                        </HBox>
+                        <HBox alignment="TOP_CENTER" prefHeight="47.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <TextField fx:id="searchField" alignment="TOP_CENTER" prefHeight="15.0" prefWidth="136.0" />
+                                <ImageView fitHeight="37.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../CSS/search2.png" />
+                                    </image>
+                                    <HBox.margin>
+                                        <Insets left="7.0" right="-20.0" top="-5.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <Button fx:id="UsersButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: transparent;">
+                                    <graphic>
+                                        <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../CSS/orangeUser.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                                    <HBox.margin>
+                                        <Insets left="30.0" top="-10.0" />
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="30.0" left="280.0" top="40.0" />
+                            </HBox.margin>
+                            <padding>
+                                <Insets right="5.0" top="5.0" />
+                            </padding>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </HBox>
+                    </children>
+                </HBox>
+                <VBox spacing="20.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                    <GridPane.margin>
                         <Insets />
-                     </opaqueInsets>
-                  </HBox>
-               </children>
-            </HBox>
-            <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <children>
+                    </GridPane.margin>
+                    <children>
 
-                  <Label text="Top Rated Movies">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
+                        <Label fx:id="blockBusterMoviesLbl" text="Blockbuster Movies">
+                            <font>
+                                <Font name="System Italic" size="12.0" />
+                            </font>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding></Label>
+                        <ListView fx:id="lvTopForUser" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" prefWidth="1198.0" stylesheets="@../CSS/style1.css">
                      <padding>
-                        <Insets left="30.0" />
-                     </padding></Label>
-                  <ListView fx:id="lvTopFromSimilar" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" prefWidth="1198.0" stylesheets="@../CSS/style1.css" />
-               </children>
-            </VBox>
-            <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <children>
+                        <Insets left="10.0" right="10.0" />
+                     </padding></ListView>
+                    </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+                </VBox>
+                <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                    <children>
 
-                  <Label text="Blockbuster Movies">
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding></Label>
+                              <Label fx:id="topRatedMoviesLbl" text="Top Rated Movies">
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                  </Label>
+                  <ListView fx:id="lvTopFromSimilar" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
 
-               </children>
-            </VBox>
-            <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-               <children>
-                  <Label text="Movie Suggestions">
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding></Label>
-                  <ListView fx:id="lvTopAvgNotSeen" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" />
-               </children>
-            </VBox>
-            <ListView fx:id="lvTopForUser" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" GridPane.rowIndex="3" />
-         </children>
-      </GridPane>
-   </content>
+                          </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+                </VBox>
+                <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                    <children>
+                        <Label text="Movie Suggestions">
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding></Label>
+                        <ListView fx:id="lvTopAvgNotSeen" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" />
+                    </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+                </VBox>
+            </children>
+        </GridPane>
+    </content>
 </MFXScrollPane>

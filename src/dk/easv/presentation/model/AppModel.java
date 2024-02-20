@@ -1,13 +1,19 @@
 package dk.easv.presentation.model;
 
+import dk.easv.APIService.LoadPosterUrls;
 import dk.easv.entities.*;
 import dk.easv.logic.LogicManager;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class AppModel {
+    private LoadPosterUrls loadPosterUrls;
+
+    public AppModel() {
+        loadPosterUrls = new LoadPosterUrls();
+    }
+
 
     LogicManager logic = new LogicManager();
     // Models of the data in the view
@@ -18,6 +24,7 @@ public class AppModel {
     private final ObservableList<TopMovie> obsTopMoviesSimilarUsers = FXCollections.observableArrayList();
 
     private final SimpleObjectProperty<User> obsLoggedInUser = new SimpleObjectProperty<>();
+
 
     public void loadUsers(){
         obsUsers.clear();
@@ -78,4 +85,5 @@ public class AppModel {
         else
             return true;
     }
+
 }

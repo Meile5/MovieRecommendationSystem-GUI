@@ -35,7 +35,6 @@ public class DataAccessManager {
         return ratings;
     }
 
-
     public void updateCacheFromDisk(){
         loadAllRatings();
     }
