@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -40,7 +41,7 @@ public class MainAppController implements Initializable {
     @FXML
     private Label blockBusterMoviesLbl;
     private AppModel model;
-    private long timerStartMillis = 0111;
+    private long timerStartMillis = 0;
     private String timerMsg = "";
 
 
@@ -58,7 +59,7 @@ public class MainAppController implements Initializable {
     public void setModel(AppModel model) {
         this.model = model;
 
-        lvTopForUser.setItems(model.getObsTopMovieNotSeen());
+        lvTopForUser.setItems(model.getObsTopMovieSeen());
         lvTopAvgNotSeen.setItems(model.getObsTopMovieNotSeen());
         lvTopFromSimilar.setItems(model.getObsTopMoviesSimilarUsers());
 
@@ -66,9 +67,12 @@ public class MainAppController implements Initializable {
         model.loadUsers();
         stopTimer();
 
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filterMovies(newValue);
-        });
+        for (Movie m: lvTopForUser.getItems()) {
+            System.out.println(m.getTitle());
+        }
+        //searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+        //    filterMovies(newValue);
+        //});
 
 
     }
@@ -79,24 +83,28 @@ public class MainAppController implements Initializable {
         setCustomCellFactory(lvTopAvgNotSeen);
         setCustomCellFactory(lvTopFromSimilar);
 
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            filterMovies(newValue); // Call filterMovies method whenever the text changes
-        });
+
+
+       // searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+       //     filterMovies(newValue); // Call filterMovies method whenever the text changes
+       // });
     }
 
     // Set custom cell factory for ListView to display movie images
     private <T> void setCustomCellFactory(ListView<T> listView) {
 
         listView.setCellFactory(param -> new ListCell<T>() {
+
             private final ImageView imageView = new ImageView();
             private final Label titleLabel = new Label();
 
             {
                 titleLabel.setAlignment(Pos.BOTTOM_LEFT); // Align the title in the center
                 titleLabel.setWrapText(true); // Allow the title to wrap if it's too long
-                titleLabel.setMaxWidth(370);
+                titleLabel.setMaxWidth(330);
                 setContentDisplay(ContentDisplay.BOTTOM); // Display the graphic (image) above the text (title)
             }
+
 
             @Override
             protected void updateItem(T item, boolean empty) {
@@ -109,19 +117,24 @@ public class MainAppController implements Initializable {
                         String imageUrl = getImageUrl(item);
                         if (imageUrl != null && !imageUrl.isEmpty()) {
                             Movie movie = item instanceof TopMovie ? ((TopMovie) item).getMovie() : (Movie) item;
-                            imageView.setFitHeight(220);
-                            imageView.setFitWidth(350);
+                            imageView.setFitHeight(200);
+                            imageView.setFitWidth(330);
                             imageView.setImage(new Image(imageUrl, true));
                             titleLabel.setText(movie.getTitle());
 
 
                             VBox vBox = new VBox();
                             vBox.getChildren().addAll(imageView, titleLabel);
-                            vBox.setMaxWidth(380);
-                            vBox.setMaxHeight(220);
+                            vBox.setMaxWidth(340);
+                            vBox.setMaxHeight(280);
 
                             setGraphic(vBox);
-                        }
+                        }else{
+                        VBox vBox = new VBox();
+                        vBox.setSpacing(0);
+                        vBox.setPadding(new Insets(0, 0, 0, 0));
+                        setGraphic(vBox);}
+
                     } catch (IOException e) {
                         e.printStackTrace();
                         // Handle IO exception
@@ -137,6 +150,8 @@ public class MainAppController implements Initializable {
         if (item instanceof Movie movie) {
             if (Objects.equals(movie.getPosterPath(), "NO POSTER FOUND")) {
                 return null;
+                //return "https://image.tmdb.org/t/p/original/qf55kqMNxU4RbUcLqk5xZIZrIVy.jpg";
+                //return "";
             }
 
             return movie.getPosterPath();
@@ -148,7 +163,8 @@ public class MainAppController implements Initializable {
         return null;
     }
 
-    private void filterMovies(String searchTerm) {
+
+    /*private void filterMovies(String searchTerm) {
         // Get the list of all movies from the model
         List<Movie> allMovies = model.getObsTopMovieNotSeen();
 
@@ -168,6 +184,41 @@ public class MainAppController implements Initializable {
         Platform.runLater(() -> {
             lvTopForUser.setItems(observableFilteredMovies);
             blockBusterMoviesLbl.setText(searchTerm.isEmpty() ? "Blockbuster Movies" : "Search result: " + searchTerm);
+        });
+    }*/
+    private void filterMovies(String searchTerm) {
+        // Filter movies for lvTopForUser ListView
+        filterListView(lvTopForUser, model.getObsTopMovieNotSeen(), searchTerm);
+
+        // Filter movies for lvTopAvgNotSeen ListView
+        filterListView(lvTopAvgNotSeen, model.getObsTopMovieNotSeen(), searchTerm);
+
+        // Filter movies for lvTopFromSimilar ListView
+        filterListView(lvTopFromSimilar, model.getObsTopMoviesSimilarUsers(), searchTerm);
+    }
+
+    private <T> void filterListView(ListView<T> listView, List<T> allItems, String searchTerm) {
+        // Create a list to store filtered items
+        List<T> filteredItems = new ArrayList<>();
+
+        // Filter items based on the search term
+        for (T item : allItems) {
+            if (item instanceof Movie) {
+                Movie movie = (Movie) item;
+                if (movie.getTitle().toLowerCase().trim().contains(searchTerm.toLowerCase().trim())) {
+                    filteredItems.add(item);
+                }
+            } // Add other conditions for different item types if needed
+        }
+
+        // Convert the filtered list to ObservableList
+        ObservableList<T> observableFilteredItems = FXCollections.observableArrayList(filteredItems);
+
+        // Update the ListView with filtered items
+        Platform.runLater(() -> {
+            listView.setItems(observableFilteredItems);
+            // Update label if needed
+            // blockBusterMoviesLbl.setText(searchTerm.isEmpty() ? "Blockbuster Movies" : "Search result: " + searchTerm);
         });
     }
 

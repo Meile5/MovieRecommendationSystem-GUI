@@ -33,7 +33,7 @@
                      <GridPane.margin>
                         <Insets top="30.0" />
                      </GridPane.margin></PasswordField>
-                  <TextField fx:id="userId" opacity="0.87" prefHeight="33.0" prefWidth="245.0" promptText="Email" style="-fx-background-color: rgba(50, 50, 50, 0.7);" text="Berni Genin">
+                  <TextField fx:id="userId" opacity="0.87" prefHeight="33.0" prefWidth="245.0" promptText="Email" style="-fx-background-color: rgba(50, 50, 50, 0.7);" text="Edwin Morrow">
                      <GridPane.margin>
                         <Insets bottom="20.0" top="20.0" />
                      </GridPane.margin></TextField>

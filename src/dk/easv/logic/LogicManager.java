@@ -26,7 +26,8 @@ public class LogicManager {
         List<Movie> top = new ArrayList<>();
 
         for(Rating rating: u.getRatings())
-            top.add(rating.getMovie());
+            if(!top.contains(rating.getMovie())){
+            top.add(rating.getMovie());}
 
         Collections.sort(top, Comparator.comparing(Movie::getAverageRating).reversed());
 

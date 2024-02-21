@@ -127,8 +127,8 @@ public class LoadPosterUrls {
         }
     }
 
-    public List<Movie> loadAllMovies() {
-        List<Movie> movies = new ArrayList<>();
+    public void loadAllMovies() {
+        //List<Movie> movies = new ArrayList<>();
         try {
             List<String> movieLines = Files.readAllLines(Path.of("data/movie_titles.txt"));
             for (String movieLine : movieLines) {
@@ -139,15 +139,17 @@ public class LoadPosterUrls {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return movies;
+        //return movies;
     }
 
 
 
     private void getMovieId(Movie movie) {
         try {
-            int movieId = apiConnection.searchMovie(movie);
-            if(movieId == -1){
+            int movieId;
+            if(!movie.getTitle().toLowerCase().contains("season")){
+                movieId = apiConnection.searchMovie(movie);
+            }else{
                 movieId = apiConnection.SearchTVShow(movie);
             }
             movieIds.put(movie.getId(), movieId);

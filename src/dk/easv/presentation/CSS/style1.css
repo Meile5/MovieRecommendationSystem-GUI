@@ -1,7 +1,7 @@
 
 
 .background {
-    -fx-background-color: linear-gradient(to bottom right, #170d01 20%, #180a01 70%, #422000 120%);
+    -fx-background-color: linear-gradient(to bottom right, #0e0801 20%, #0c0501 70%, #422000 120%);
 }
 
 .list-view {
@@ -18,8 +18,10 @@
       -fx-background-color: transparent;
 }
 
+
 .list-view .scroll-bar {
-     -fx-background-color: black;
-
-
- }
+    -fx-opacity: 0;
+}
+.scroll-bar{
+    -fx-opacity: 0;
+}
