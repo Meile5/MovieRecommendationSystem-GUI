@@ -40,8 +40,10 @@ public class MainAppController implements Initializable {
     @FXML
     private Label blockBusterMoviesLbl;
     private AppModel model;
-    private long timerStartMillis = 0;
+    private long timerStartMillis = 0111;
     private String timerMsg = "";
+
+
 
 
     private void startTimer(String message) {
