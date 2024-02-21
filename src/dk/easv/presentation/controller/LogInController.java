@@ -36,7 +36,8 @@ public class LogInController implements Initializable {
         if(user!=null){
         try {
             model.loadData(user);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/MainApp.fxml"));
+            URL url = getClass().getResource("/dk/easv/presentation/view/MainApp.fxml");
+            FXMLLoader loader = new FXMLLoader(url);
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

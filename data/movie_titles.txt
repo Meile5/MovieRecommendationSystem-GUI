@@ -15282,8 +15282,7 @@
 15284,2000,Amazing Earth
 15285,1984,Missing in Action
 15286,1996,Diabolique
-15287,2003,Sex and the Single Mom
-15288,2002,Vovochka
+15287,2003,Sex and the Single Momaf
 15289,1970,Joe
 15290,1996,The Watermelon Woman
 15291,1984,'Allo 'Allo!: Series 1

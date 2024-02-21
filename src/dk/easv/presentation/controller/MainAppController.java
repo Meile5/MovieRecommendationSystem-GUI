@@ -112,6 +112,7 @@ public class MainAppController implements Initializable {
                             imageView.setImage(new Image(imageUrl, true));
                             titleLabel.setText(movie.getTitle());
 
+
                             VBox vBox = new VBox();
                             vBox.getChildren().addAll(imageView, titleLabel);
                             vBox.setMaxWidth(380);
