@@ -129,6 +129,7 @@ public class MainAppController implements Initializable {
                             vBox.getChildren().addAll(imageView, titleLabel);
                             vBox.setMaxWidth(340);
                             vBox.setMaxHeight(280);
+                            vBox.setSpacing(-10);
 
                             setGraphic(vBox);
                         }else{

@@ -137,7 +137,7 @@
                         </HBox>
                     </children>
                 </HBox>
-                <VBox spacing="20.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                <VBox spacing="25.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
@@ -148,8 +148,11 @@
                                 <Font name="System Italic" size="12.0" />
                             </font>
                             <padding>
-                                <Insets left="30.0" />
-                            </padding></Label>
+                                <Insets left="60.0" />
+                            </padding>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin></Label>
                         <ListView fx:id="lvTopForUser" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css">
                      <padding>
                         <Insets left="10.0" right="10.0" />
@@ -159,7 +162,7 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
                 </VBox>
-                <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                <VBox spacing="25.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
@@ -167,8 +170,11 @@
 
                               <Label fx:id="topRatedMoviesLbl" text="Top Rated Movies">
                             <padding>
-                                <Insets left="30.0" />
+                                <Insets left="60.0" />
                             </padding>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
                   </Label>
                   <ListView fx:id="lvTopFromSimilar" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" stylesheets="@../CSS/style1.css" />
 
@@ -177,15 +183,18 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
                 </VBox>
-                <VBox GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                <VBox spacing="25.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
                     <children>
                         <Label fx:id="MovieSuggestionsLabel" text="Movie Suggestions">
                             <padding>
-                                <Insets left="30.0" />
-                            </padding></Label>
+                                <Insets left="60.0" />
+                            </padding>
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin></Label>
                         <ListView fx:id="lvTopAvgNotSeen" maxHeight="300.0" minHeight="300.0" orientation="HORIZONTAL" prefHeight="300.0" />
                     </children>
                <padding>
