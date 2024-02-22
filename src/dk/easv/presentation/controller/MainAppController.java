@@ -26,6 +26,8 @@ import java.util.ResourceBundle;
 
 
 public class MainAppController implements Initializable {
+    public Label topRatedMoviesLbl;
+    public Label MovieSuggestionsLabel;
     @FXML
     private ListView<User> lvUsers;
     @FXML
@@ -85,9 +87,9 @@ public class MainAppController implements Initializable {
 
 
 
-       // searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-       //     filterMovies(newValue); // Call filterMovies method whenever the text changes
-       // });
+       searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterMovies(newValue); // Call filterMovies method whenever the text changes
+        });
     }
 
     // Set custom cell factory for ListView to display movie images
@@ -164,7 +166,7 @@ public class MainAppController implements Initializable {
     }
 
 
-    /*private void filterMovies(String searchTerm) {
+    private void filterMovies(String searchTerm) {
         // Get the list of all movies from the model
         List<Movie> allMovies = model.getObsTopMovieNotSeen();
 
@@ -184,41 +186,19 @@ public class MainAppController implements Initializable {
         Platform.runLater(() -> {
             lvTopForUser.setItems(observableFilteredMovies);
             blockBusterMoviesLbl.setText(searchTerm.isEmpty() ? "Blockbuster Movies" : "Search result: " + searchTerm);
-        });
-    }*/
-    private void filterMovies(String searchTerm) {
-        // Filter movies for lvTopForUser ListView
-        filterListView(lvTopForUser, model.getObsTopMovieNotSeen(), searchTerm);
-
-        // Filter movies for lvTopAvgNotSeen ListView
-        filterListView(lvTopAvgNotSeen, model.getObsTopMovieNotSeen(), searchTerm);
-
-        // Filter movies for lvTopFromSimilar ListView
-        filterListView(lvTopFromSimilar, model.getObsTopMoviesSimilarUsers(), searchTerm);
-    }
-
-    private <T> void filterListView(ListView<T> listView, List<T> allItems, String searchTerm) {
-        // Create a list to store filtered items
-        List<T> filteredItems = new ArrayList<>();
-
-        // Filter items based on the search term
-        for (T item : allItems) {
-            if (item instanceof Movie) {
-                Movie movie = (Movie) item;
-                if (movie.getTitle().toLowerCase().trim().contains(searchTerm.toLowerCase().trim())) {
-                    filteredItems.add(item);
-                }
-            } // Add other conditions for different item types if needed
-        }
-
-        // Convert the filtered list to ObservableList
-        ObservableList<T> observableFilteredItems = FXCollections.observableArrayList(filteredItems);
-
-        // Update the ListView with filtered items
-        Platform.runLater(() -> {
-            listView.setItems(observableFilteredItems);
-            // Update label if needed
-            // blockBusterMoviesLbl.setText(searchTerm.isEmpty() ? "Blockbuster Movies" : "Search result: " + searchTerm);
+            // Hide other ListView objects when filtering
+            lvTopAvgNotSeen.setVisible(false);
+            lvTopFromSimilar.setVisible(false);
+            topRatedMoviesLbl.setVisible(false);
+            MovieSuggestionsLabel.setVisible(false);
+            // Make other ListView objects visible again when filter is not applied
+            if (searchTerm.isEmpty()) {
+                lvTopAvgNotSeen.setVisible(true);
+                lvTopFromSimilar.setVisible(true);
+                topRatedMoviesLbl.setVisible(true);
+                MovieSuggestionsLabel.setVisible(true);
+            }
+            
         });
     }
 
