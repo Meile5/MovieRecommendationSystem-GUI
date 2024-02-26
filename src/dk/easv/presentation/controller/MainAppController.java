@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -17,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -69,9 +71,7 @@ public class MainAppController implements Initializable {
         model.loadUsers();
         stopTimer();
 
-        for (Movie m: lvTopForUser.getItems()) {
-            System.out.println(m.getTitle());
-        }
+
         //searchField.textProperty().addListener((observable, oldValue, newValue) -> {
         //    filterMovies(newValue);
         //});
@@ -86,11 +86,15 @@ public class MainAppController implements Initializable {
         setCustomCellFactory(lvTopFromSimilar);
 
 
-
        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             filterMovies(newValue); // Call filterMovies method whenever the text changes
         });
+
+
+
+
     }
+
 
     // Set custom cell factory for ListView to display movie images
     private <T> void setCustomCellFactory(ListView<T> listView) {
@@ -105,6 +109,8 @@ public class MainAppController implements Initializable {
                 titleLabel.setWrapText(true); // Allow the title to wrap if it's too long
                 titleLabel.setMaxWidth(330);
                 setContentDisplay(ContentDisplay.BOTTOM); // Display the graphic (image) above the text (title)
+
+
             }
 
 
@@ -128,10 +134,21 @@ public class MainAppController implements Initializable {
                             VBox vBox = new VBox();
                             vBox.getChildren().addAll(imageView, titleLabel);
                             vBox.setMaxWidth(340);
-                            vBox.setMaxHeight(280);
+                            vBox.setMaxHeight(240);
                             vBox.setSpacing(-10);
 
+                            // Add event handlers to change border color when mouse enters and exits
+                            vBox.setOnMouseEntered(event -> {
+                                vBox.setStyle("-fx-border-color: white; -fx-border-width: 2px;");
+                            });
+
+                            vBox.setOnMouseExited(event -> {
+                                vBox.setStyle(null);
+                            });
+
+
                             setGraphic(vBox);
+
                         }else{
                         VBox vBox = new VBox();
                         vBox.setSpacing(0);
@@ -145,8 +162,16 @@ public class MainAppController implements Initializable {
                 }
             }
 
+
+
         });
+
+
+
+
     }
+
+
 
     // Get image URL based on the item type
     private <T> String getImageUrl(T item) throws IOException {
