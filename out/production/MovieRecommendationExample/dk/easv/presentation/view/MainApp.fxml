@@ -18,7 +18,7 @@
 <MFXScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1200.0" styleClass="background" stylesheets="@../CSS/style1.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainAppController">
 
     <content>
-        <GridPane hgap="20.0" styleClass="background" vgap="20.0">
+        <GridPane hgap="20.0" styleClass="background" vgap="36.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
@@ -27,7 +27,6 @@
 
                 <RowConstraints maxHeight="327.0" minHeight="315.0" prefHeight="327.0" valignment="CENTER" vgrow="ALWAYS" />
                 <RowConstraints maxHeight="327.0" minHeight="315.0" prefHeight="327.0" valignment="CENTER" vgrow="ALWAYS" />
-                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
                 <RowConstraints maxHeight="327.0" minHeight="315.0" prefHeight="327.0" valignment="CENTER" vgrow="ALWAYS" />
                 <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
             </rowConstraints>
@@ -137,15 +136,15 @@
                         </HBox>
                     </children>
                 </HBox>
-                <VBox spacing="25.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+                <VBox spacing="18.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
                     <children>
 
-                        <Label fx:id="blockBusterMoviesLbl" text="Blockbuster Movies">
+                        <Label fx:id="blockBusterMoviesLbl" style="-fx-font-weight: bold;" text="Blockbuster Movies">
                             <font>
-                                <Font name="System Italic" size="12.0" />
+                                <Font name="System Bold" size="12.0" />
                             </font>
                             <padding>
                                 <Insets left="60.0" />
@@ -162,13 +161,13 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
                 </VBox>
-                <VBox spacing="25.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
+                <VBox spacing="18.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
                     <children>
 
-                              <Label fx:id="topRatedMoviesLbl" text="Top Rated Movies">
+                              <Label fx:id="topRatedMoviesLbl" style="-fx-font-weight: bold;" text="Top Rated Movies">
                             <padding>
                                 <Insets left="60.0" />
                             </padding>
@@ -183,12 +182,12 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
                 </VBox>
-                <VBox spacing="25.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.vgrow="ALWAYS">
+                <VBox spacing="18.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS">
                     <GridPane.margin>
                         <Insets />
                     </GridPane.margin>
                     <children>
-                        <Label fx:id="MovieSuggestionsLabel" text="Movie Suggestions">
+                        <Label fx:id="MovieSuggestionsLabel" style="-fx-font-weight: bold;" text="Movie Suggestions">
                             <padding>
                                 <Insets left="60.0" />
                             </padding>
